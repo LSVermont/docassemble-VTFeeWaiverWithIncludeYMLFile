@@ -59,10 +59,10 @@ code: |
   VT_fee_waiver_intro
   set_progress(5)
   important_notes_to_user
-  #user_ask_role
   
   set_progress(10)
   nav.set_section('about_you')
+  user_ask_role
   users.gather()
   users[0].address.address
   set_progress(15)
