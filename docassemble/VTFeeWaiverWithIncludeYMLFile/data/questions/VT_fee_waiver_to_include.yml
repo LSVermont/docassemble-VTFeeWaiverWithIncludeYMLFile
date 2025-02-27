@@ -53,7 +53,8 @@ code: |
   
   # Below sets the user_role by asking a question.
   # You can set user_role directly instead to either 'plaintiff' or 'defendant'
-  
+
+  lets_start_fee_waiver
   nav.set_section('intro')
   VT_fee_waiver_intro
   set_progress(5)
@@ -145,7 +146,17 @@ code: |
   signature_date
   set_progress(95)
   al_form_requires_digital_signature = False
+---
+id: lets start fee waiver
+decoration: file-signature
+question: |
+  Let's start the fee waiver form questions
+subquestion: |
+  You've already answered some of the basic questions that are asked in the fee waiver form. Now we'll work through the remaining questions.
 
+  Tap Next to get started.
+
+continue button field: lets_start_fee_waiver
 ---
 ################################# PUBLIC BENEFITS ##############################
 comment: |
