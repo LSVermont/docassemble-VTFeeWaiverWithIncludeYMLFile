@@ -2270,6 +2270,7 @@ attachments:
           ${ other_parties.short_list(2) } v. ${ users[0] }
           % else:
           ${ users[0] } v. ${ other_parties.short_list(2) } 
+          % endif
       - "users1_name_full": ${ users[0] }
       - "users1_name_full__1": ${ users[0] }
       - "users1_address_line_one": ${ users[0].address.line_one() }
