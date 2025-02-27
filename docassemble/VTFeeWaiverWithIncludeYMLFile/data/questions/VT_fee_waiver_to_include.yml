@@ -148,11 +148,10 @@ code: |
   al_form_requires_digital_signature = False
 ---
 id: lets start fee waiver
-decoration: file-signature
 question: |
   Let's start the fee waiver form questions
 subquestion: |
-  You've already answered some of the basic questions that are asked in the fee waiver form. Now we'll work through the remaining questions.
+  You've already answered some of the questions that are asked in the fee waiver form. Now we'll work through the remaining questions.
 
   Tap Next to get started.
 
@@ -2266,7 +2265,11 @@ attachments:
           % else:
           ${ trial_court.address.county }
           % endif
-      - "case_name": ${ other_parties.short_list(2) } v. ${ users[0] }
+      - "case_name": |
+          % if user_role == "defendant":
+          ${ other_parties.short_list(2) } v. ${ users[0] }
+          % else:
+          ${ users[0] } v. ${ other_parties.short_list(2) } 
       - "users1_name_full": ${ users[0] }
       - "users1_name_full__1": ${ users[0] }
       - "users1_address_line_one": ${ users[0].address.line_one() }
