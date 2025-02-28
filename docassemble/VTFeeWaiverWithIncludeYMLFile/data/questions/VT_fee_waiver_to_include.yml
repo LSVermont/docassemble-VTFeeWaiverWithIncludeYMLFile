@@ -2,6 +2,8 @@
 comment: |
   This is the fee waiver to_include file that is used in other guided interviews.
 
+  This file includes code we committed to fee waiver form on 2/28/25.
+
   We are working to integrate it into the Small Claims Answer interview.
 
   
@@ -192,7 +194,7 @@ data: !!omap
   - 3SquaresVT: "3SquaresVT (food)"
   - Dr Dynasaur: "Dr. Dynasaur"
   - Fuel Assist.: "Fuel Assistance"
-  - GA: "General Assistance (GA)"
+  - General Assist.: "General Assistance (GA)"
   - Housing Assist.: "Housing Assistance (subsidy/voucher/Section 8)"
   - Medicaid: "Medicaid"
   - Reach Up: "Reach Up"
@@ -332,7 +334,7 @@ columns:
   - Source: |
       row_item.display_name if defined("row_item.source") else ""
   - Public assistance per month: |
-      currency(row_item.total(times_per_year=12)) if row_item.source == "Reach Up" or row_item.source == "3SquaresVT" or row_item.source == "GA" or row_item.source == "SSI" or row_item.source == "Fuel Assist." or row_item.source == "Housing Assist." or row_item.source == "other" else "Varies (can set to $0 for this form)"
+      currency(row_item.total(times_per_year=12)) if row_item.source == "Reach Up" or row_item.source == "3SquaresVT" or row_item.source == "General Assist." or row_item.source == "SSI" or row_item.source == "Fuel Assist." or row_item.source == "Housing Assist." or row_item.source == "other" else "Varies (can set to $0 for this form)"
 edit:
   - source
   - value
@@ -2130,6 +2132,7 @@ event: VT_fee_waiver_download
 question: |
   ${ download_screen_instructions_headline_one_form }
 subquestion: |
+  ${ len(comma_list((public_benefit.source for public_benefit in public_benefits.matches(source=["3SquaresVT","Dr Dynasaur","Fuel Assist.","General Assist.","Housing Assist.","Medicaid","Reach Up","SSI"])),(public_benefit.display_name for public_benefit in public_benefits.matches(source="other")))) }
   
   ${ download_screen_instructions_one_form }
 
@@ -2158,9 +2161,19 @@ attachment:
   variable name: VT_fee_waiver_attachment.addendum
   docx template file: VT_fee_waiver_addendum.docx
 ---
+reconsider: True
 code: |
   VT_fee_waiver_attachment.overflow_fields["public_benefits"].label = "Other public assistance that is part of the reported monthly amount"
-  VT_fee_waiver_attachment.overflow_fields["public_benefits"].overflow_trigger = 3
+  if public_benefits.number_gathered() < 4:
+    if len(comma_list((public_benefit.source for public_benefit in public_benefits.matches(source=["3SquaresVT","Dr Dynasaur","Fuel Assist.","General Assist.","Housing Assist.","Medicaid","Reach Up","SSI"])),(public_benefit.display_name for public_benefit in public_benefits.matches(source="other")))) < 44:
+      VT_fee_waiver_attachment.overflow_fields["public_benefits"].overflow_trigger = 3
+    else:
+      VT_fee_waiver_attachment.overflow_fields["public_benefits"].overflow_trigger = 2
+  else:
+    if len(comma_list((public_benefits[0].display_name if public_benefits[0].source == "other" else public_benefits[0].source), (public_benefits[1].display_name if public_benefits[1].source == "other" else public_benefits[1].source), (public_benefits[2].display_name if public_benefits[2].source == "other" else public_benefits[2].source))) < 40:
+      VT_fee_waiver_attachment.overflow_fields["public_benefits"].overflow_trigger = 3
+    else:
+      VT_fee_waiver_attachment.overflow_fields["public_benefits"].overflow_trigger = 2
   VT_fee_waiver_attachment.overflow_fields["public_benefits"].headers = [
     {'display_name': "Public assistance"},
   ]  
@@ -2321,30 +2334,17 @@ attachments:
           % endif
    
       - "users1_benefits": |
-          % if public_benefits.number_gathered() > 0:
-          % if defined("public_benefits[0].source"):
-          % if public_benefits[0].source == "other":
-          ${ public_benefits[0].display_name }
+          % if public_benefits.number_gathered() < 4:
+          % if len(comma_list((public_benefit.source for public_benefit in public_benefits.matches(source=["3SquaresVT","Dr Dynasaur","Fuel Assist.","General Assist.","Housing Assist.","Medicaid","Reach Up","SSI"])),(public_benefit.display_name for public_benefit in public_benefits.matches(source="other")))) < 44:
+          ${ comma_list((public_benefit.source for public_benefit in public_benefits.matches(source=["3SquaresVT","Dr Dynasaur","Fuel Assist.","General Assist.","Housing Assist.","Medicaid","Reach Up","SSI"])),(public_benefit.display_name for public_benefit in public_benefits.matches(source="other"))) }
           % else:
-          ${ public_benefits[0].source }
+          ${ comma_list((public_benefits[0].display_name if public_benefits[0].source == "other" else public_benefits[0].source), (public_benefits[1].display_name if public_benefits[1].source == "other" else public_benefits[1].source)) }...
           % endif
-          % endif
-          % if defined("public_benefits[1].source"):
-          % if public_benefits[1].source == "other":
-          , ${ public_benefits[1].display_name }
           % else:
-          , ${ public_benefits[1].source }
-          % endif
-          % endif
-          % if defined("public_benefits[2].source"):
-          % if public_benefits[2].source == "other":
-          , ${ public_benefits[2].display_name }
+          % if len(comma_list((public_benefits[0].display_name if public_benefits[0].source == "other" else public_benefits[0].source), (public_benefits[1].display_name if public_benefits[1].source == "other" else public_benefits[1].source), (public_benefits[2].display_name if public_benefits[2].source == "other" else public_benefits[2].source))) < 40:
+          ${ comma_list((public_benefits[0].display_name if public_benefits[0].source == "other" else public_benefits[0].source), (public_benefits[1].display_name if public_benefits[1].source == "other" else public_benefits[1].source), (public_benefits[2].display_name if public_benefits[2].source == "other" else public_benefits[2].source)) }...
           % else:
-          , ${ public_benefits[2].source }
-          % endif
-          % endif
-          % if defined("public_benefits[3].source"):
-          .....
+          ${ comma_list((public_benefits[0].display_name if public_benefits[0].source == "other" else public_benefits[0].source), (public_benefits[1].display_name if public_benefits[1].source == "other" else public_benefits[1].source)) }...
           % endif
           % endif
           
