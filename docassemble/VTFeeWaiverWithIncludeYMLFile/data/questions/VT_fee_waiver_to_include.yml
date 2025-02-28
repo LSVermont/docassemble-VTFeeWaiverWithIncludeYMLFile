@@ -2132,8 +2132,6 @@ event: VT_fee_waiver_download
 question: |
   ${ download_screen_instructions_headline_one_form }
 subquestion: |
-  ${ len(comma_list((public_benefit.source for public_benefit in public_benefits.matches(source=["3SquaresVT","Dr Dynasaur","Fuel Assist.","General Assist.","Housing Assist.","Medicaid","Reach Up","SSI"])),(public_benefit.display_name for public_benefit in public_benefits.matches(source="other")))) }
-  
   ${ download_screen_instructions_one_form }
 
   ${ action_button_html(url_action('review_VT_fee_waiver'), label='<i class="fa-solid fa-pencil"></i> Edit your answers', color='info') }
