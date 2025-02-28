@@ -39,6 +39,7 @@ objects:
 ##########################################################################
 
 sections:
+  - fee_waiver: Fee waiver
   - your_income: Your income
   - your_expenses: Your expenses
   - your_assets: Your property and assets
@@ -56,14 +57,15 @@ code: |
   # Below sets the user_role by asking a question.
   # You can set user_role directly instead to either 'plaintiff' or 'defendant'
 
+  nav.set_section('fee_waiver')
   lets_start_fee_waiver
-  nav.set_section('intro')
+
   VT_fee_waiver_intro
   set_progress(5)
   important_notes_to_user
   
   set_progress(10)
-  nav.set_section('about_you')
+
   user_ask_role
   users.gather()
   users[0].address.address
@@ -72,13 +74,11 @@ code: |
   users[0].email
   household_size
   
-  nav.set_section('case_info')
+
   set_progress(20)
   docket_number
   set_progress(25)
   
-  
-  nav.set_section('your_income')
   set_progress(30)
   if len(public_benefits) > 0:
     public_benefits.review_items
@@ -95,14 +95,12 @@ code: |
     if len(other_incomes) > 0:
       other_incomes.review_items
 
-    nav.set_section('your_expenses')
     set_progress(50)
     expenses_intro
     if len(expenses) > 0:
       expenses.review_items
 
     set_progress(60)
-    nav.set_section('your_assets')
     assets_intro
   
     if len(vehicles) > 0:
@@ -120,7 +118,6 @@ code: |
     if len(other_assets) > 0:
       other_assets.review_items        
       
-    nav.set_section('reasons')
     set_progress(80)
     other_reasons_why_cannot_afford
     
