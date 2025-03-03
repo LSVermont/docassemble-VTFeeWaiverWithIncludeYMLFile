@@ -39,7 +39,7 @@ objects:
 ##########################################################################
 
 sections:
-  - fee_waiver: Fee waiver
+  - do_fee_waiver: Fee waiver
   - your_income: Your income
   - your_expenses: Your expenses
   - your_assets: Your property and assets
@@ -57,10 +57,10 @@ code: |
   # Below sets the user_role by asking a question.
   # You can set user_role directly instead to either 'plaintiff' or 'defendant'
 
-  nav.set_section('fee_waiver')
+  nav.set_section('do_fee_waiver')
   lets_start_fee_waiver
 
-  VT_fee_waiver_intro
+  VT_fee_waiver_intro_shortened
   set_progress(5)
   important_notes_to_user
   
@@ -225,11 +225,13 @@ code: |
 id: are there public benefits
 #public_benefits
 question: |
-  Do you get public assistance?
-subquestion: |
-  Do you get any kind of government benefit that is based on need, disability, dependent children, or another reason based on your income?
-  
-  We've included a few examples below. You can also check "other."
+  % if len(has_exempt_income_state.true_values()) > 0 or len(has_exempt_income_other.true_values()) > 0:
+    You said you get some public assistance. Tell us about what you get.
+  % else:
+    Do you get public assistance?
+  % endif
+subquestion: |  
+  We've included examples of government benefits that are based on need, disability, dependent children, or another reason based on your income. Check any that you receive. You can also check "other."
   
   Check any that apply to you.
 fields:
@@ -926,7 +928,7 @@ subquestion: |
 continue button field: al_intro_screen
 ---
 id: VT fee waiver intro
-continue button field: VT_fee_waiver_intro
+continue button field: VT_fee_waiver_intro_shortened
 question: |
   Is this tool right for you?
 subquestion: | 
