@@ -126,6 +126,7 @@ code: |
   self_employed_jobs
   employer_jobs_review_table
   self_employed_jobs_review_table
+  
   interview_order_VT_fee_waiver = True
 
 ---
@@ -133,9 +134,7 @@ code: |
 comment: |
   This block includes the logic for standalone interviews.
   Delete mandatory: True to include in another interview
-mandatory: True
 code: |
-  al_intro_screen
   interview_order_VT_fee_waiver
   nav.set_section("review_VT_fee_waiver")
   trial_court.address.county
