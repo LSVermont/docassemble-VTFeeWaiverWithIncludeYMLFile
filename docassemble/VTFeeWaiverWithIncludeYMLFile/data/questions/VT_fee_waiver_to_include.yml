@@ -930,20 +930,7 @@ continue button field: VT_fee_waiver_intro
 question: |
   Is this tool right for you?
 subquestion: | 
-  ${ start_accordion('<h2 class="h5">Do you need this fee waiver form?</h2>') }
-  <p>Before you begin, check to be sure you actually need to pay a court filing fee.</p>
-  
-  <p>When you ask the court for a Relief from Abuse (RFA) order, there are no court fees. It is free. Here is the full list of forms that have no filing fee:</p>
-  
-  <ul><li>Request for Relief from Abuse</li>
-  <li>Request for Abuse Prevention for a Vulnerable Adult</li>
-  <li>Request for Order Against Stalking</li>
-  <li>Request for Order Against Sexual Assault</li>
-  <li>Request for Extreme Risk Protection Order</li>
-  <li>Abusive Litigation</li></ul>
-  <p>You do not pay a fee to file an "answer" in a court case. However, there is a fee to file a "counterclaim" in some cases (such as eviction or small claims), but not others (such as divorce or parentage).</p>
-
-  ${ next_accordion('<h2 class="h5">Who can get their fees waived?</h2>') }
+  ${ start_accordion('<h2 class="h5">Who can get their fees waived?</h2>') }
   The Vermont Judiciary says the court can waive your filing fee and service costs if:
   
   <ul><li>you get any kind of public assistance, or</li>
@@ -968,18 +955,6 @@ subquestion: |
   <p>Ask for general help with court forms or the court process by contacting the <a href="https://www.vermontjudiciary.org/self-help/ARC">Vermont Judiciary Access and Resource Center.</a> Their services are free and they serve the whole state. They do NOT give legal advice.</p>
 
   ${ end_accordion() }
-
-  <h4>Our terms of use</h4>
-fields:
-  - To continue, please accept our [terms of use](https://vtlawhelp.org/vtcourtforms/terms-of-use).: acknowledged_information_use
-    datatype: checkboxes
-    none of the above: False    
-    minlength: 1
-    choices:
-      - I accept the terms of use.
-    validation messages:
-      minlength: |
-        You cannot continue unless you agree to the terms of use.
 ---
 id: important_notes_to_user
 question: |
