@@ -1158,7 +1158,7 @@ confirm: True
 ############################# EXPENSES #############################
 ---
 id: expenses intro
-mandatory: True
+#mandatory: True
 continue button field: expenses_intro
 question: |
   Expenses
@@ -1326,7 +1326,7 @@ edit:
   - value
 ---
 id: assets intro
-mandatory: True
+#mandatory: True
 continue button field: assets_intro
 question: |
   Assets
