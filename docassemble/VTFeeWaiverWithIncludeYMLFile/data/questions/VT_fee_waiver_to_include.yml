@@ -69,7 +69,7 @@ code: |
   users.gather()
   users[0].address.address
   set_progress(15)
-  users[0].daytime_phone_number
+  users[0].phone_number
   users[0].email
   household_size
   
@@ -1078,12 +1078,15 @@ subquestion: |
   If you do not have a phone number or email, you can use a trusted friend's phone number. But the friend must be someone you can rely on to give you a message.
 
 fields:  
-  - Daytime phone number: users[0].daytime_phone_number
+  - Home or cell phone number: users[0].phone_number
+    datatype: al_international_phone
+    required: False
+  - Work phone or other phone number: users[0].work_phone_number
+    maxlength: 26
     datatype: al_international_phone
     required: False
   - Email address: users[0].email    
     datatype: email
-    required: False
 ---
 continue button field: users.revisit
 question: |
@@ -1104,15 +1107,18 @@ columns:
       row_item.mailing_address.block() if defined("row_item.mailing_address.address") else ""
   - Email: |
       row_item.email if defined("row_item.email") else ""
-  - Phone number: |
-      row_item.daytime_phone_number if defined("row_item.daytime_phone_number") else ""
+  - Home or cell phone number: |
+      row_item.phone_number if defined("row_item.phone_number") else ""
+  - Work or other number: |
+      row_item.work_phone_number if defined("row_item.work_phone_number") else ""
   - Signature: |
       row_item.signature if defined("row_item.signature") else ""
 edit:
   - name.first
   - address.address
   - email
-  - daytime_phone_number
+  - phone_number
+  - work_phone_number
   - signature
 confirm: True
 ---
@@ -2239,7 +2245,8 @@ attachments:
           ${ users[0].mailing_address.on_one_line() }
           % endif
       - "users1_email": ${ users[0].email }
-      - "users1_phone_number": ${ users[0].daytime_phone_number }
+      - "users1_phone_number": ${ users[0].phone_number }
+      - "users1_work_phone_number": ${ users[0].work_phone_number }
       - "household_size": ${ household_size }
       - "employed_yes": ${ employed }
       - "employed_no": ${ not employed }
