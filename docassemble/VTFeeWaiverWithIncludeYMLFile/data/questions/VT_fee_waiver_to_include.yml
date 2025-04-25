@@ -993,21 +993,6 @@ fields:
   - note: |
       ${ collapse_template(asterisk) }
 ---
-id: court case information
-question: |
-  What is the name of the court case you are involved in?
-subquestion: |
-  Example: Joanna Kramer vs. Ted Kramer
-  
-  The plaintiff is listed first, then the defendant.
-fields:
-  - "Case name, as seen on your court papers": case_name
-    maxlength: 80
-  - note: |
-      **Note**: If you are starting a case, you are the plaintiff. Type in your first and last name "vs." the first and last name of the other party / defendant(s).
-      
-      If you are a defendant in a case, type in the plaintiff's first and last name(s) "vs." your first and last name. If you are filing a counterclaim, you remain the defendant. Use the plaintiff and defendant names as seen on the original court papers you got.
----
 id: choose a court division
 question: |
   What court is your case in?
@@ -1876,11 +1861,6 @@ review:
       % else:
       ${ showifdef("docket_number") }
       % endif
-      
-  - Edit: case_name
-    button: |
-      **Case name**:
-      ${ case_name }
       
   - note: |
       ###About you
