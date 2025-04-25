@@ -60,7 +60,6 @@ code: |
   nav.set_section('do_fee_waiver')
   lets_start_fee_waiver
 
-  VT_fee_waiver_intro_shortened
   set_progress(5)
   important_notes_to_user
   
@@ -1774,10 +1773,6 @@ fields:
     input type: area
     maxlength: 1000
     required: False
-  - note: |
-      **We’re ready to generate your draft form so you can review it!** It will take a moment after you tap the Next button.
-
-#${ after_last_question_we_will_generate_your_forms }
 ---
 ############################# SIGNATURE #############################
 ---
