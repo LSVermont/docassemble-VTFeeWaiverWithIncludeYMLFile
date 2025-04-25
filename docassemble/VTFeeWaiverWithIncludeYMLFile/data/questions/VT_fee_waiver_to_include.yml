@@ -224,11 +224,7 @@ code: |
 id: are there public benefits
 #public_benefits
 question: |
-  % if len(has_exempt_income_state.true_values()) > 0 or len(has_exempt_income_other.true_values()) > 0:
-    You said you get some public assistance. Tell us about what you get.
-  % else:
-    Do you get public assistance?
-  % endif
+    Do you get public assistance? If so, what kind?
 subquestion: |  
   We've included examples of government benefits that are based on need, disability, dependent children, or another reason based on your income. Check any that you receive. You can also check "other."
   
