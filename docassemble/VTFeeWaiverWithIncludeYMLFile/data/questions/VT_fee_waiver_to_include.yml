@@ -2313,7 +2313,7 @@ attachments:
           % endif
       
       - "users1_income_employment_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if jobs.total(times_per_year=12,exclude_source=["self employed"]) == 0:
           
           % else:
@@ -2321,7 +2321,7 @@ attachments:
           % endif
           % endif
       - "users1_income_unemployment_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if other_incomes.total(source=["unemployment income"],times_per_year=12) == 0:
            
           % else:
@@ -2330,7 +2330,7 @@ attachments:
           % endif
 
       - "users1_income_child_support_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if other_incomes.total(source=["child support income"],times_per_year=12) == 0:
             
           % else:
@@ -2339,7 +2339,7 @@ attachments:
           % endif
       
       - "users1_income_other_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if other_incomes.total(exclude_source=["unemployment income","child support income"],times_per_year=12) == 0:
             
           % else:
@@ -2350,7 +2350,7 @@ attachments:
 
           
       - "users1_income_self_employment_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if jobs.total(source=["self employed"],times_per_year=12) != 0:
           ${ round(jobs.total(source=["self employed"],times_per_year=12), 2) }
           % else:
@@ -2359,7 +2359,7 @@ attachments:
           % endif
           
       - "users1_income_monthly_total": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if defined("jobs"):
           ${ round(jobs.gross_total(times_per_year=12) + other_incomes.total(times_per_year=12), 2) }
           % elif other_incomes.number_gathered() > 0:
@@ -2370,7 +2370,7 @@ attachments:
           % endif
           
       - "users1_income_annual_total": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if defined("jobs"):
           ${ round(jobs.gross_total(times_per_year=1) + other_incomes.total(times_per_year=1), 2) }
           % elif employed:
@@ -2384,7 +2384,7 @@ attachments:
 
       
       - "users1_expenses_rent_mortgage_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["rent"],times_per_year=12) + expenses.total(source=["mortgage"],times_per_year=12) == 0:
            
           % else:
@@ -2392,7 +2392,7 @@ attachments:
           % endif      
           % endif
       - "users1_expenses_electric_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["electric"],times_per_year=12) == 0:
            
           % else:
@@ -2400,7 +2400,7 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_phone_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["phone"],times_per_year=12) == 0:
            
           % else:
@@ -2408,7 +2408,7 @@ attachments:
           % endif
           % endif
       - "users1_expenses_fuel_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["fuel"],times_per_year=12) == 0:
            
           % else:
@@ -2416,7 +2416,7 @@ attachments:
           % endif
           % endif
       - "users1_expenses_food_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["food"],times_per_year=12) == 0:
            
           % else:
@@ -2424,7 +2424,7 @@ attachments:
           % endif
           % endif
       - "users1_expenses_clothes_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["clothing"],times_per_year=12) == 0:
            
           % else:
@@ -2432,7 +2432,7 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_medical_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["medical"],times_per_year=12) == 0:
            
           % else:
@@ -2440,7 +2440,7 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_child_support_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["child support"],times_per_year=12) == 0:
            
           % else:
@@ -2448,7 +2448,7 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_auto_loan_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["auto loan"],times_per_year=12) == 0:
            
           % else:
@@ -2456,7 +2456,7 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_property_tax_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["property tax"],times_per_year=12) == 0:
            
           % else:
@@ -2464,7 +2464,7 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_all_insurance_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(source=["health insurance", "auto insurance", "other insurance"],times_per_year=12) == 0:
            
           % else:
@@ -2472,7 +2472,7 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_other_monthly_amount": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if expenses.total(exclude_source=["rent", "mortgage", "electric", "phone", "fuel", "food", "clothing", "medical", "child support", "auto loan", "property tax", "health insurance", "auto insurance", "other insurance" ],times_per_year=12) == 0:
            
           % else:
@@ -2480,12 +2480,12 @@ attachments:
           % endif  
           % endif
       - "users1_expenses_monthly_total": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ round(expenses.total(times_per_year=12), 2) }
           % endif
       
       - "assets_yes": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if vehicles.number_gathered() > 0:
           ${ "True" }
           % elif real_estate.number_gathered() > 0:
@@ -2497,77 +2497,77 @@ attachments:
           % endif
           % endif
       - "assets_no": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if vehicles.number_gathered() == 0 and real_estate.number_gathered() == 0 and  bank_assets.number_gathered() == 0 and other_assets.number_gathered() == 0:
           ${ "True" }
           % endif
           % endif
       - "users1_assets_vehicle_0_amount_owed": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[0].balance,symbol="") }
           % endif
       - "users1_assets_vehicle_0_description": |
-           % if public_benefits.number_gathered() = 0:
+           % if public_benefits.number_gathered() == 0:
            ${ vehicles[0].make } ${ vehicles[0].model } ${ vehicles[0].year } 
            % endif
       - "users1_assets_vehicle_0_net_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[0].market_value - vehicles[0].balance,symbol="") }
           % endif
       - "users1_assets_vehicle_0_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[0].market_value,symbol="") }
           % endif
       - "users1_assets_vehicle_1_description": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ vehicles[1].make } ${ vehicles[1].model } ${ vehicles[1].year }
           % endif
       - "users1_assets_vehicle_1_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[1].market_value,symbol="") }
           % endif
       - "users1_assets_vehicle_1_amount_owed": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[1].balance,symbol="") }
           % endif
       - "users1_assets_vehicle_1_net_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[1].market_value - vehicles[1].balance,symbol="") }
           % endif
       - "users1_assets_vehicle_2_description": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ vehicles[2].make } ${ vehicles[2].model } ${ vehicles[2].year } 
           % endif
       - "users1_assets_vehicle_2_amount_owed": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[2].balance,symbol="") }
           % endif
       - "users1_assets_vehicle_2_net_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[2].market_value - vehicles[2].balance,symbol="") }
           % endif
       - "users1_assets_vehicle_2_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[2].market_value,symbol="") }
           % endif
       - "users1_assets_vehicle_3_description": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ vehicles[3].make } ${ vehicles[3].model } ${ vehicles[3].year } 
           % endif
       - "users1_assets_vehicle_3_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[3].market_value,symbol="") }
           % endif
       - "users1_assets_vehicle_3_amount_owed": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[3].balance,symbol="") }
           % endif
       - "users1_assets_vehicle_3_net_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(vehicles[3].market_value - vehicles[3].balance,symbol="") }
           % endif      
       - "users1_assets_real_estate_0_description": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if real_estate.number_gathered() > 0:
           % if real_estate[0].source == "primary residence":
           Primary residence
@@ -2579,19 +2579,19 @@ attachments:
           % endif
           % endif
       - "users1_assets_real_estate_0_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(real_estate[0].market_value,symbol="") }
           % endif
       - "users1_assets_real_estate_0_amount_owed": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(real_estate[0].balance,symbol="") }
           % endif
       - "users1_assets_real_estate_0_net_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(real_estate[0].market_value - real_estate[0].balance,symbol="") }
           % endif
       - "users1_assets_real_estate_1_description": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if real_estate.number_gathered() > 1:
           % if real_estate[1].source == "primary residence":
           Primary residence
@@ -2603,19 +2603,19 @@ attachments:
           % endif
           % endif
       - "users1_assets_real_estate_1_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(real_estate[1].market_value,symbol="") }
           % endif
       - "users1_assets_real_estate_1_amount_owed": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(real_estate[1].balance,symbol="") }
           % endif
       - "users1_assets_real_estate_1_net_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(real_estate[1].market_value - real_estate[1].balance,symbol="") }
           % endif      
       - "users1_assets_checking_accounts": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if bank_assets.market_value(source=["checking account"]) == 0:
            
           % else:
@@ -2623,7 +2623,7 @@ attachments:
           % endif        
           % endif     
       - "users1_assets_cash_on_hand": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if bank_assets.market_value(source=["cash on hand"]) == 0:
            
           % else:
@@ -2631,7 +2631,7 @@ attachments:
           % endif      
           % endif
       - "users1_assets_savings_accounts": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           % if bank_assets.market_value(source=["savings account"]) == 0:
            
           % else:
@@ -2639,27 +2639,27 @@ attachments:
           % endif   
           % endif
       - "users1_assets_cash_total": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(bank_assets.market_value(),symbol="") }
           % endif      
       - "users1_assets_other_0_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(other_assets[0].market_value,symbol="") }
           % endif
       - "users1_assets_other_0_description": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ other_assets[0].display_name }
           % endif
       - "users1_assets_other_1_market_value": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ currency(other_assets[1].market_value,symbol="") }
           % endif
       - "users1_assets_other_1_description": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${ other_assets[1].display_name }
           % endif      
       - "other_reasons_why_cannot_afford": |
-          % if public_benefits.number_gathered() = 0:
+          % if public_benefits.number_gathered() == 0:
           ${VT_fee_waiver_attachment.safe_value("other_reasons_why_cannot_afford")}
           % endif
       - "signature_date": ${ signature_date }
