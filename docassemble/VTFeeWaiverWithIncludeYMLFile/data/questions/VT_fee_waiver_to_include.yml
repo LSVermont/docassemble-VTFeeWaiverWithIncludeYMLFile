@@ -345,6 +345,7 @@ subquestion: |
 ---
 variable name: other_incomes.terms_ordered
 data: !!omap
+  - investments: "Income from investments"
   - unemployment income: "Unemployment benefits"
   - child support income: "Child support"
   - other: "Other"
