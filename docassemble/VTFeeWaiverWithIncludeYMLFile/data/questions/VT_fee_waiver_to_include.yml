@@ -2285,6 +2285,8 @@ attachments:
           % else:
           ${ round(jobs.gross_total(exclude_source=["self employed"],times_per_year=12), 2) }
           % endif
+          % else:
+          
           % endif
       - "users1_income_unemployment_monthly_amount": |
           % if public_benefits.number_gathered() == 0:
