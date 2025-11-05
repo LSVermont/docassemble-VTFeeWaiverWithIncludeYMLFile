@@ -2166,44 +2166,9 @@ code: |
 ##################### ATTACHMENTS #####################
 ---
 objects:
-  - VT_fee_waiver_post_interview_instructions: ALDocument.using(title="NEXT STEPS - Instructions for filing this form with the court", filename="VT_fee_waiver_next_steps.docx", enabled=True, has_addendum=False, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
-  - VT_fee_waiver_attachment: ALDocument.using(title="Vermont fee waiver form 600-00228", filename="VT_fee_waiver.pdf", enabled=True, has_addendum=True, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
+  - VT_fee_waiver_attachment: ALDocument.using(title="Vermont fee waiver form 600-00228", filename="VT_fee_waiver.pdf", has_addendum=True, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
 ---
-objects:
-  - al_user_bundle: ALDocumentBundle.using(elements=[VT_fee_waiver_post_interview_instructions,VT_fee_waiver_attachment], filename="VT_fee_waiver.pdf_package.pdf", title="All forms to download for your records", enabled=True)
-  - al_court_bundle: ALDocumentBundle.using(elements=[VT_fee_waiver_attachment], filename="VT_fee_waiver.pdf_package.pdf", title="All forms to download for your records", enabled=True)
----
-attachments:
-  - name: VT fee waiver post interview instructions
-    filename: VT_fee_waiver_next_steps
-    variable name: VT_fee_waiver_post_interview_instructions[i]        
-    skip undefined: True
-    docx template file: VT_fee_waiver_next_steps.docx
-    fields:
-        - "address_county": |
-            % if trial_court_division == "Environmental":
-  
-            % elif trial_court_division == "Judicial Bureau":
-              
-            % else:
-            ${ trial_court.address.county } County
-            % endif
-        - "court_division": |
-            % if trial_court_division == "Unknown":
-
-            % else:
-            ${ trial_court.division }
-            % endif          
-        - "name": ${ trial_court }
-        - "address_address": ${ trial_court.address.address }
-        - "address_unit": ${ trial_court.address.unit }
-        - "address_city": ${ trial_court.address.city }
-        - "address_state": ${ trial_court.address.state }
-        - "address_zip": ${ trial_court.address.zip }
-        - "arbitrary_attribute": ${ trial_court.arbitrary_attribute }
-        - "phone": ${ trial_court.phone }
-        - "email": ${ trial_court.email }
-  
+attachments:  
   - name: VT fee waiver attachment
     filename: VT_fee_waiver.pdf     
     variable name: VT_fee_waiver_attachment[i]        
