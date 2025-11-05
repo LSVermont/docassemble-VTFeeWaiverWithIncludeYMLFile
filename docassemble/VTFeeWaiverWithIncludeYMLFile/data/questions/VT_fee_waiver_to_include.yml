@@ -2279,12 +2279,13 @@ attachments:
           % endif
       
       - "users1_income_employment_monthly_amount": |
-          % if len(public_benefits) == 0:
-          % if jobs.total(times_per_year=12,exclude_source=["self employed"]) == 0:
+          % if public_benefits.number_gathered() == 0 and jobs.total(times_per_year=12,exclude_source=["self employed"]) == 0:
           
-          % else:
+          % elif public_benefits.number_gathered() == 0:
           ${ round(jobs.gross_total(exclude_source=["self employed"],times_per_year=12), 2) }
-          % endif
+
+          % else:
+          
           % endif
       - "users1_income_unemployment_monthly_amount": |
           % if public_benefits.number_gathered() == 0:
