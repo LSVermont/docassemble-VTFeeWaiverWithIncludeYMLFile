@@ -1748,7 +1748,7 @@ columns:
 edit:
   - source
   - market_value
-  - balance
+
 
 ---
 
