@@ -2196,10 +2196,18 @@ attachments:
           ${ trial_court.address.county }
           % endif
       - "case_name_FW": |
-          % if user_role == "defendant":
-          ${ other_parties.short_list(2) } v. ${ users[0] }
-          % else:
-          ${ users[0] } v. ${ other_parties.short_list(2) } 
+          % if defined("user_role"):
+            % if user_role == "defendant":
+            ${ other_parties.short_list(2) } v. ${ users[0] }
+            % else:
+            ${ users[0] } v. ${ other_parties.short_list(2) } 
+            % endif
+          % elif defined("user_ask_role"):
+            % if user_ask_role == "defendant":
+            ${ other_parties.short_list(2) } v. ${ users[0] }
+            % else:
+            ${ users[0] } v. ${ other_parties.short_list(2) } 
+            % endif
           % endif
       - "users1_name_full": ${ users[0] }
       - "users1_name_full__1": ${ users[0] }
