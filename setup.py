@@ -46,7 +46,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.VTFeeWaiverWithIncludeYMLFile',
       version='1.3',
       description=('Fee waiver - Vermont - Form 600-00228'),
-      long_description='# docassemble.VtFeeWaiver\r\n\r\nFee waiver - Vermont - Form 600-00228\r\n\r\n## Author\r\n\r\nGuided interview by Legal Services Vermont / VTLawHelp.org website\r\n\r\n',
+      long_description='# docassemble.VTFeeWaiverWithIncludeYMLFile\n\nFee waiver - Vermont - Form 600-00228\n\n## Author\n\nKris Surette, ksurette@legalservicesvt.org\n\n',
       long_description_content_type='text/markdown',
       author='Guided interview by Legal Services Vermont / VTCourtForms',
       author_email='ksurette@legalservicesvt.org',

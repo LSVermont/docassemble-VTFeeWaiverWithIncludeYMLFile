@@ -186,7 +186,7 @@ comment: |
 id: public_benefits terms_ordered
 variable name: public_benefits.terms_ordered
 data: !!omap
-  - 3SquaresVT: "3SquaresVT (food)"
+  - 3SquaresVT: "3SquaresVT/SNAP (food)"
   - Dr Dynasaur: "Dr. Dynasaur"
   - Fuel Assist.: "Fuel Assistance"
   - General Assist.: "General Assistance (GA)"
@@ -937,7 +937,7 @@ subquestion: |
 
   ${ next_accordion('<h2 class="h5">Information you will need</h2>') }
   <ul><li>the name and address of any employer you might have</li>
-  <li>any public assistance that you get (like 3SquaresVT food help, ReachUp help for families, SSI, etc.) and the amount, and</li>
+  <li>any public assistance that you get (like 3SquaresVT/SNAP food help, ReachUp help for families, SSI, etc.) and the amount, and</li>
   <li>information about the court case for which you want a fee waiver. (You can find this information on other court papers you have about this case. If you are starting a court action — like filing for divorce — you won't have a case number or docket number yet.)</li></ul>
   
   <p>If you get public assistance, that's all you need. <strong>If you don't get public assistance</strong>, you will also need to know:</p>
