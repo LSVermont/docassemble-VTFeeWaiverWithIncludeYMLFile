@@ -2,6 +2,8 @@
 comment: |
   This is the fee waiver to_include file that is used in other guided interviews.
 
+  Note that the PDF template and attachment code here is different than the stand-alone waiver interview. This template file has  _FW added to attachment code fieldnames. We did this to have unique fieldnames and avoid mishaps when there are multiple PDFs.
+
   This file includes code we committed to fee waiver form on 2/28/25.
 
   This file is used with the Small Claims Answer interview.
