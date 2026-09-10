@@ -131,6 +131,21 @@ code: |
   interview_order_VT_fee_waiver = True
 
 ---
+###################### MAIN INTERVIEW ORDER ######################
+comment: |
+  This block includes the logic for standalone interviews.
+  Delete mandatory: True to include in another interview
+code: |
+  interview_order_VT_fee_waiver
+  nav.set_section("review_VT_fee_waiver")
+  trial_court.address.county
+  VT_fee_waiver_preview_question
+  set_progress(92)
+  nav.set_section('sign')
+  signature_date
+  set_progress(95)
+  al_form_requires_digital_signature = False
+---
 id: lets start fee waiver
 question: |
   Let's start the fee waiver form questions
@@ -1784,36 +1799,36 @@ fields:
 continue button field: saw_signature_choice    
 ---
 
-###################### PREVIEW SCREEN #######################
-#---
-#id: preview VT_fee_waiver
-#question: |
-#  Preview your form before you sign it
-#subquestion: |
-#  
-#  Here is a preview of the form you will sign on the next screen. 
-#  
-#  ${ al_court_bundle.as_pdf(key='preview') }
-#
-#  Click the image to view it in a new tab. **Remember to come back to this screen to edit the form and/or finish the form.**
-#  
-#  Click the "Edit your answers" button to make changes.
-#
-#  ${ action_button_html(url_action('review_VT_fee_waiver'), label='<i class="fa-solid fa-pencil"></i> Edit your answers', color='info') }
-#
-#  **Tap Next to choose how to sign your form.**
-#  
-#continue button field: VT_fee_waiver_preview_question    
-#---
-#code: |
-#  signature_fields = ['users[0].signature']
-#---
-#code: |
-#  # This is a placeholder for the addresses that will be searched
-#  # for matching address to court. Edit if court venue is based on 
-#  # a different address than the user's
-#  addresses_to_search = [user.address for user in users]
-#---
+##################### PREVIEW SCREEN #######################
+---
+id: preview VT_fee_waiver
+question: |
+  Preview your form before you sign it
+subquestion: |
+  
+  Here is a preview of the form you will sign on the next screen. 
+  
+  ${ al_court_bundle.as_pdf(key='preview') }
+
+  Click the image to view it in a new tab. **Remember to come back to this screen to edit the form and/or finish the form.**
+  
+  Click the "Edit your answers" button to make changes.
+
+  ${ action_button_html(url_action('review_VT_fee_waiver'), label='<i class="fa-solid fa-pencil"></i> Edit your answers', color='info') }
+
+  **Tap Next to choose how to sign your form.**
+  
+continue button field: VT_fee_waiver_preview_question    
+---
+code: |
+  signature_fields = ['users[0].signature']
+---
+code: |
+  # This is a placeholder for the addresses that will be searched
+  # for matching address to court. Edit if court venue is based on 
+  # a different address than the user's
+  addresses_to_search = [user.address for user in users]
+---
 
   
   
