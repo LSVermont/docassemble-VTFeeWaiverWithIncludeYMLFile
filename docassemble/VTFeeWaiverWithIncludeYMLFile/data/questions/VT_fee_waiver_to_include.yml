@@ -242,7 +242,7 @@ subquestion: |
   You have already told us about your benefits from ${ comma_and_list(public_benefit.display_name for public_benefit in public_benefits.complete_elements()) }.
   % endif
 fields:
-  - Source of income: public_benefits[i].source
+  - Source: public_benefits[i].source
     input type: dropdown
     code: |
       public_benefits_ordered
